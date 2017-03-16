@@ -66,7 +66,7 @@ public class ComputeWord {
             if(count == null) {
                 map.put(word, 1);
             } else {
-                map.put(word, count++);
+                map.put(word, ++count);
             }
         }
         return map;

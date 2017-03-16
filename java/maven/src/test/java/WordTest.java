@@ -42,4 +42,14 @@ public class WordTest {
         Assertions.assertThat(word).isEqualTo("a 1\nb 1\nc 1\nd 1\ne 1\nf 1\ng 1");
     }
 
+    /**
+     * test with more word and have repeat words
+     */
+    @Test
+    public void TestWordsWithMoreWordAndWithRepeatWord() {
+        String path = "/Users/weihuang/Downloads/ut-workshop/word3.txt";
+        String word = new ComputeWord().compute(path);
+        System.out.println(word);
+        Assertions.assertThat(word).isEqualTo("a 4\nb 1\nc 1\nd 1\ne 3\nf 3\ng 2");
+    }
 }
