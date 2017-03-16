@@ -52,6 +52,7 @@ public class ComputeWord {
         }
         List<String> wordList = analyzeWords(text);
         Map<String, Integer> map = countWords(wordList);
+        map = sortWordsAsCount(map);
         return print(map);
     }
 
@@ -72,6 +73,20 @@ public class ComputeWord {
         return map;
     }
 
+    private Map<String, Integer> sortWordsAsCount(Map<String, Integer> map) {
+        Map<String, Integer> sortWords = new LinkedHashMap<String, Integer>();
+        List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        for(Map.Entry<String, Integer> entry : list) {
+            sortWords.put(entry.getKey(), entry.getValue());
+        }
+        return sortWords;
+    }
+
     private String print(Map<String, Integer> map) {
         Set<Map.Entry<String, Integer>> set = map.entrySet();
         StringBuilder sb = new StringBuilder();
@@ -87,5 +102,15 @@ public class ComputeWord {
             index++;
         }
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        Map<String, Integer> map = new TreeMap<String, Integer>();
+        map.put("c", 3);
+        map.put("a", 1);
+        map.put("b", 5);
+        map.put("d", 2);
+
+        System.out.println(map);
     }
 }
