@@ -75,10 +75,16 @@ public class ComputeWord {
     private String print(Map<String, Integer> map) {
         Set<Map.Entry<String, Integer>> set = map.entrySet();
         StringBuilder sb = new StringBuilder();
+        int index = 0;
         for(Map.Entry<String, Integer> entry : set) {
             String word = entry.getKey();
             Integer count = entry.getValue();
             sb.append(word + " " + count);
+
+            if(index < set.size() - 1) {
+                sb.append("\n");
+            }
+            index++;
         }
         return sb.toString();
     }

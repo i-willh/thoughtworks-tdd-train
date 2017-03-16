@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 public class WordTest {
 
     /**
-     * test none word
+     * test with none word
      */
     @Test
     public void TestWordsWithNoneWords() {
@@ -30,4 +30,16 @@ public class WordTest {
         Assertions.assertThat(word).isEqualTo("a 1");
 
     }
+
+    /**
+     * test with more word
+     */
+    @Test
+    public void TestWordsWithMoreWord() {
+        String path = "/Users/weihuang/Downloads/ut-workshop/word2.txt";
+        String word = new ComputeWord().compute(path);
+        System.out.println(word);
+        Assertions.assertThat(word).isEqualTo("a 1\nb 1\nc 1\nd 1\ne 1\nf 1\ng 1");
+    }
+
 }
